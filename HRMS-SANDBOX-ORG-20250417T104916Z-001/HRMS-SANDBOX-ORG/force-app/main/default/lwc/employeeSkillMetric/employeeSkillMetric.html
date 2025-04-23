@@ -1,0 +1,166 @@
+<template>
+	<lightning-card icon-name="standard:employee_organization" title="Skill Metrics">
+        <template if:true={isLoading}>
+		<lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+		</lightning-spinner>
+	</template>
+		<div class="slds-p-horizontal_medium">
+			<lightning-combobox name="types" label="Skill Metrics" value={value} options={TypeOptions}
+				onchange={handleTypeChange}>
+			</lightning-combobox>
+		</div>
+		<template if:true={isShowSection}>
+			<div style="width:98%; padding-left:17px;">
+				<lightning-input type="number" label="Minimum Experience Required" onchange={handleEmployeeInfo}>
+				</lightning-input>
+			</div>
+			<div class="slds-section slds-is-open">
+				<h3 class="slds-section__title Section">
+					<button aria-controls="expando-unique-id" aria-expanded="true"
+                    class="slds-button slds-section__title-action">
+                    <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+                        aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                    </svg>
+                    <span class="slds-truncate" title="Section Title">First Section</span>
+                </button>
+				</h3>
+				<div class="slds-section__content" id="expando-unique-id">
+
+					<table
+						class="slds-table slds-table_bordered  slds-table–header-fixed_container  slds-table_col-bordered  "
+						aria-label="Example table of Opportunities with vertical borders ">
+						<thead>
+							<tr>
+								<th>Employee Name</th>
+								<th>Employee Skill</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={employeeWithProjectSkill} for:item="rec">
+								<tr key={rec}>
+									<td>{rec.empName} &nbsp;&nbsp;
+                                         <template if:true={rec.percentageConsuming}>
+                                                                <span>
+                                                                {rec.percentageConsuming}%</span>
+                                                            </template>
+                                         </td>
+									<td>
+										<template for:each={rec.skills} for:item="recSkill">
+											<template for:each={recSkill} for:item="item">
+												<div key={item} class="slds-grid slds-gutters">
+													<div if:true={item.isMatchSkill} class="slds-col"
+														style="color: green;">
+														{item.skillsName} &nbsp;&nbsp;
+													</div>
+													<div if:false={item.isMatchSkill} class="slds-col"
+														style="color: red;">
+														{item.skillsName} &nbsp;&nbsp;
+													</div>
+												</div>
+											</template>
+										</template>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="slds-section slds-is-open">
+				<h3 class="slds-section__title Section">
+					<button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+                <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                </svg>
+                <span class="slds-truncate" title="Section Title">Second Section</span>
+              </button>
+				</h3>
+				<table
+					class="slds-table slds-table_bordered  slds-table–header-fixed_container  slds-table_col-bordered  "
+					aria-label="Example table of Opportunities with vertical borders ">
+					<thead>
+						<tr>
+							<th>Employee Name</th>
+							<th>Employee Skill</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={employeeWithProjectPackSkill} for:item="rec">
+							<tr key={rec}>
+								<td>{rec.empName}&nbsp;&nbsp;
+                                    <template if:true={rec.percentageConsuming}>
+                                            <span>
+                                                {rec.percentageConsuming}%
+                                            </span>
+                                    </template>
+                                </td>
+								<td>
+									<template for:each={rec.skills} for:item="recSkill">
+										<template for:each={recSkill} for:item="item">
+											<div key={item} class="slds-grid slds-gutters">
+												<div if:true={item.isMatchSkill} class="slds-col" style="color: green;">
+													{item.skillsName} &nbsp;&nbsp;
+												</div>
+												<div if:false={item.isMatchSkill} class="slds-col" style="color: red;">
+													{item.skillsName} &nbsp;&nbsp;
+												</div>
+											</div>
+										</template>
+									</template>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+			<div class="slds-section slds-is-open">
+				<h3 class="slds-section__title Section">
+					<button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+                <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                </svg>
+                <span class="slds-truncate" title="Section Title">Third Title</span>
+              </button>
+				</h3>
+				<table
+					class="slds-table slds-table_bordered  slds-table–header-fixed_container  slds-table_col-bordered  "
+					aria-label="Example table of Opportunities with vertical borders ">
+					<thead>
+						<tr>
+							<th>Employee Name</th>
+							<th>Employee Skill</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={employeeWithProjectPackSkillAndProjectSkil} for:item="rec">
+							<tr key={rec}>
+								<td>{rec.empName}&nbsp;&nbsp;
+                                    <template if:true={rec.percentageConsuming}>
+                                            <span>
+                                                {rec.percentageConsuming}%
+                                            </span>
+                                    </template>
+                                </td>
+								<td>
+									<template for:each={rec.skills} for:item="recSkill">
+										<template for:each={recSkill} for:item="item">
+											<div key={item} class="slds-grid slds-gutters">
+												<span if:true={item.isMatchSkill} class="slds-col" style="color: green;">
+                                            {item.skillsName} &nbsp;&nbsp;
+                                        </span>
+												<span if:false={item.isMatchSkill} class="slds-col" style="color: red;">
+                                            {item.skillsName} &nbsp;&nbsp;
+                                        </span>
+											</div>
+										</template>
+									</template>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</template>
+	</lightning-card>
+</template>

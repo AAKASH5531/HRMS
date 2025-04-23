@@ -1,0 +1,98 @@
+<template>
+	<template if:false={isSpinner}>
+		<div class="slds-text-longform ">
+			<div class="background-div ">
+				<lightning-card icon-name="standard:employee_organization" title="Employee Information">
+					<div class="tableFixHead" style="width:98%; margin:auto">
+						<table
+							class="slds-table slds-table_bordered  slds-table–header-fixed_container  slds-table_col-bordered  "
+							aria-label="Example table of Opportunities with vertical borders ">
+							<thead>
+								<template for:each={tableHeader} for:item="eachString">
+									<th key={eachString}>{eachString}</th>
+								</template>
+							</thead>
+							<tbody>
+								<template for:each={visibleRecord} for:item="record">
+                                    {record.isBillableColorClass}
+                                      {isBillableColorClass}
+									<tr key={record.name}>
+										<td>
+											{record.name}
+										</td>
+										<td>
+											{record.experience}
+										</td>
+										<td>
+											<template if:true={record.isShadow}>&nbsp;
+												<span  class="isBillableYellowColorClass">
+                                                    {record.employeeBandwidth}%
+                                                </span>
+											</template>
+											<template if:true={record.isBillable}>&nbsp;
+												<span class = "bgColorClassGreen">
+                                                    {record.employeeBandwidth}%
+                                                </span>
+											</template>
+											<template if:true={record.isTrainingProject}>&nbsp;
+												<span class ="bgColorClassBlue">
+                                                    {record.employeeBandwidth}%
+                                                </span>
+											</template>
+											<template if:true={record.isNocolor}>&nbsp;
+												<span>
+                                                    {record.employeeBandwidth}%
+                                                </span>
+											</template>
+										</td>
+										<template for:each={record.assignedProject} for:item="rec" for:index="index">
+											<td key={rec}>
+												<template if:true={rec.isProjectAssigned}>
+													<label class="container">
+                                                        <input  type="checkbox" checked={rec.isProjectAssigned} disabled >
+                                                        <span class="checkmark" ></span>&nbsp;
+                                                        <span class={rec.bgColorClass}>{rec.consumption}%
+                                                        </span>
+                                                        <!-- &nbsp;<span class={rec.isBillableColorClass}>
+                                                            {rec.bandwidth}% </span> -->
+                                                        <template if:true={rec.isShadow}>&nbsp;
+                                                            <span style="color: rgb(192, 36, 72);font-weight: bold;">
+                                                                <br>Shadow <br>of({rec.managerName})
+                                                            </span>
+                                                        </template>
+                                                    </label>
+												</template>
+												<template if:false={rec.isProjectAssigned}>
+													<label class="container">
+                                                        <input type="checkbox" checked={rec.isProjectAssigned} disabled>
+                                                        <span class="checkmark"></span>&nbsp;<span>{rec.consumption}%
+                                                        </span>
+                                                        <!-- &nbsp;<span class={rec.isBillableColorClass}>
+                                                            {rec.bandwidth}% </span> -->
+                                                            <template if:true={rec.isShadow}>
+                                                                 &nbsp;<span style="color: rgb(192, 36, 72);font-weight: bold;">
+                                                                <br>Shadow<br>of ({rec.managerName})</span>
+                                                            </template>
+                                                    </label>
+												</template>
+											</td>
+										</template>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+					<div slot="footer" class="slds-var-m-vertical_medium">
+						<c-pagination records={listOfEmployeeData} record-size="7" onupdate={updateEmployeeHandler}>
+						</c-pagination>
+					</div>
+				</lightning-card>
+			</div>
+		</div>
+	</template>
+	<template if:true={isSpinner}>
+		<div class="exampleHolder">
+			<lightning-spinner alternative-text="Loading" size="xx-small"></lightning-spinner>
+		</div>
+	</template>
+</template>

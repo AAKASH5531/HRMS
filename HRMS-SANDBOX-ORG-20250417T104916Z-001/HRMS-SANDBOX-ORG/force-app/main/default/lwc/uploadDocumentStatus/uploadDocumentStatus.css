@@ -1,0 +1,51 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+.uploadedColor {
+    --slds-c-badge-color-background: Green; 
+    --slds-c-badge-text-color: white; 
+  }
+  .pendingColor {
+    --slds-c-badge-color-background: hwb(39 2% 3%); 
+    --slds-c-badge-text-color: white; 
+  }
+.fontSize{
+  text-align: center;
+   font-size: 11px;
+}
+th,
+td {
+  width: 110px;
+  overflow: hidden;
+}
+
+  .background-div {
+  width: 343px;
+}
+.tbody{
+  display:block;
+  overflow:auto;
+  height:200px;
+  width:100%;
+}
+.fixed_header thead tr{
+  display:block;
+}
+.tableFixHead {
+  overflow-x: auto;
+  height: 200px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0px;
+}
+.scrollClass{
+  overflow-x:scroll;
+  overflow-y:hidden;
+}
+.scrollClass::-webkit-scrollbar {
+  display: none;
+}

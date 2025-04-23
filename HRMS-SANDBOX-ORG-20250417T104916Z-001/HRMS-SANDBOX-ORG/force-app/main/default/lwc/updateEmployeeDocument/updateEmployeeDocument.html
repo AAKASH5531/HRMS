@@ -1,0 +1,49 @@
+<template>
+	<div class="slds-grid slds-align_absolute-center  slds-border_bottom">
+		<div class="slds-text-heading_large" style="margin-top: 12px;  padding-top: 20px; padding-bottom: 20px;">
+			{label.updateEmployeeDocuments}
+		</div>
+	</div>
+	<template if:true={isLoading}>
+		<lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+		</lightning-spinner>
+	</template>
+	<div style="margin-left: 200px; margin-right: 200px; margin-top: 30px;">
+		<lightning-combobox name="progress" value={label} placeholder="Select Document" options={optionsArray}
+			onchange={handleChange}>
+		</lightning-combobox>
+	</div>
+	<div class="slds-align_absolute-center" style="margin-bottom: 20px; margin-top: 20px;">
+		<lightning-input type="file" disabled={isDisabledFileUploader} onchange={handleUploadFile}> </lightning-input>
+	</div>
+	<div class="slds-align_absolute-center" style="margin-bottom: 20px;" if:true={isSelected}>
+		Selected File: {selectedFile}
+		<template if:true={showCrossButton}>
+			<div class="slds-m-right_small">
+				<lightning-icon icon-name="utility:close" size="xx-small" alternative-text="Indicates close"
+					onclick={clickedCrossIcon}>
+				</lightning-icon>
+			</div>
+		</template>
+	</div>
+	<div style="padding-left: 20px;padding-bottom: 30px;">
+      <lightning-radio-group name="radioGroup"
+                          label="Select Document Type"
+                          options={options}
+                          value={value}
+                            required
+                          type="radio" onchange={handleCheckBoxChanges} disabled = {isRadioSelect} ></lightning-radio-group>
+	</div>
+	<div class="slds-border_top">
+		<div class="slds-grid slds-grid_align-end" style=" padding-top: 20px; padding-bottom: 20px; margin-right:20px">
+			<lightning-button class="slds-button" variant="neutral" label="Cancel" onclick={closeModel}>
+			</lightning-button>
+			<lightning-button class="slds-button slds-m-left_x-small" disabled = {isDisableSave} variant="brand"
+				label="Save" onclick={uploadFileToApexAsNote}></lightning-button>
+		</div>
+	</div>
+
+
+
+
+</template>

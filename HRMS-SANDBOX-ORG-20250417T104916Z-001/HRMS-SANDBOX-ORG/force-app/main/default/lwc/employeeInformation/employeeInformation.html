@@ -1,0 +1,109 @@
+<template>
+	<div class="background-div " style="border:transparent;">
+		<div style="padding-top:1px; padding-bottom:1px;">
+			<template for:each={employeeData} for:item="item">
+				<div key={item} class="slds-theme_default  "
+					style=" margin-left:30px ;margin-top:20px;width:300px;height:470px ; border: ridge; background-color:  rgb(255, 255, 255);">
+					<div
+						style="  border-radius: 900px; margin-left: 15px;  margin-right: 20px; margin-top: 15px; margin-bottom: 30px; width:255px;height:400px ;">
+						<div class="triangle1"></div>
+						<div style="  margin-right: -28px; margin-top: -60px; margin-bottom: 17px; margin-left:78px">
+							<img src={gittoImage}>
+                        </div>
+							<div class="slds-align_absolute-center" style="margin-bottom: -20px;">
+								<template if:true={profileUploaded}>
+									<div class="avatar-container">
+										<span class="slds-avatar slds-avatar_circle "
+                                        style="border-radius: 20px; zoom: 310% ;margin-bottom: 10px; margin-left: 1px; margin-top: -14px; ">
+                                        <abbr class="slds-avatar__initials slds-icon-standard-user"
+                                            title="person name">{nameInitials}</abbr>
+                                    </span>
+									</div>
+								</template>
+							</div>
+							<div class="slds-align_absolute-center" style="margin-bottom: -20px;">
+								<template if:false={profileUploaded}>
+									<div style="border-radius: 20px; zoom: 330% ;margin-bottom: 16px; margin-left: 1px;
+                                    margin-top: -8px">
+										<div class="slds-avatar slds-avatar_circle ">
+											<lightning-avatar src={imageUrl}></lightning-avatar>
+										</div>
+									</div>
+								</template>
+							</div>
+						</div>
+						<div style="margin-left: 30px;margin-right: 27px; margin-bottom:60px ">
+							<div class="user-details"
+								style="margin-left: -12px;margin-right: 27px; margin-top: -209px;   grid-auto-rows: 50px;border:transparent; border-radius: -156px; width:261px;height:232px ;  background-color: #203e66;">
+								<div>
+									<div class="slds-align_absolute-center"
+										style="font-size: 19px;font-family:serif; color:white ; margin-top:4px;">
+										<strong>{userName}</strong>
+									</div>
+									<div>
+										<h1 class="slds-align_absolute-center "
+											style=" font-size: 16px; font-family:serif;color:white ;">
+											{item.employeeId}
+										</h1>
+										<h1 class="slds-align_absolute-center "
+											style=" font-size: 17px; font-family:serif;color:white ;">
+											{item.designation}
+										</h1>
+									</div>
+								</div>
+								<div>
+									<div class="slds-align_absolute-center"
+										style="font-size: 17px; font-family:serif;color:white ;">
+										<strong>Email ID</strong>
+									</div>
+									<div>
+										<h1 class="slds-align_absolute-center"
+											style="font-weight: bold; font-size: 16px; font-family:serif;color:white ;">
+											{item.email}
+										</h1>
+									</div>
+								</div>
+								<div class="slds-align_absolute-center"
+									style="margin-top: 1px; font-size: 16px; font-family:serif;color:white ;"><strong>Contact
+                                    no.</strong>
+								</div>
+								<div>
+									<h1 class="slds-align_absolute-center"
+										style=" font-weight: bold; font-family:serif; font-size: 15px;color:white ;">
+										{item.contactNumber}
+									</h1>
+								</div>
+								<div class="slds-align_absolute-center"
+									style="margin-top: 3px; font-size: 16px; font-family:serif;color:white ; ">
+									<strong>DOJ</strong>
+								</div>
+								<div>
+									<h1 class="slds-align_absolute-center"
+										style=" font-weight: bold; font-family:serif; font-size: 14px;color:white ;">
+										{item.joiningDate}
+									</h1>
+								</div>
+							</div>
+						</div>
+						<template if:true={profileUploaded}>
+							<div class="triangle2"></div>
+							<div style=" width:24px;height:70px ;"></div>
+							<div
+								style="  margin-right: -14px; margin-top: -195px; margin-bottom: 109px; margin-left:1px; border:transparent; border-radius: 900px;">
+								<img src={claudBase}>
+                            </div>
+						</template>
+						<template if:false={profileUploaded}>
+							<div
+								style="  margin-right: -14px; margin-top: -56px; margin-bottom: 109px; margin-left:1px; border:transparent; border-radius: 900px;">
+								<img src={claudBase}>
+                            </div>
+							<div style="width: 120px; height: 120px; margin-top: -171px; margin-left: 235px; background: red linear-gradient(#05234b,#05234b);
+                                       clip-path: polygon(0% 50%, 50% 0%, 50% 50%);transform: rotate(359deg);">
+							</div>
+						</template>
+					</div>
+			</template>
+		</div>
+	</div>
+</template>

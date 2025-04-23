@@ -1,0 +1,117 @@
+<template>
+	<template if:true={isEmployeeDocument}>
+		<div class="slds-text-longform ">
+			<div class="background-div" style="width:100%;">
+				<lightning-card icon-name="standard:employee_organization" title="Employee Document Status">
+					<template for:each={records} for:item="record">
+						<tr key={record}>
+							<template if:true={record.labelFieldWrapper.isExtraDocumentUploaded}>
+								<lightning-layout>
+									<lightning-layout-item padding="around-small">
+										<lightning-icon icon-name='utility:warning'
+											alternative-text='Too many documents uploaded in files please clean..!'
+											variant='warning' size='small'
+											title='Too many documents uploaded in files please clean..!'>
+										</lightning-icon>
+									</lightning-layout-item>
+									<lightning-layout-item padding="around-small">
+										<h1>"Too many documents uploaded in files please clean..!"</h1>
+									</lightning-layout-item>
+								</lightning-layout>
+							</template>
+						</tr>
+					</template>
+					<table  aria-label="Example table of Opportunities with vertical borders  "
+						style="width:90%; margin: auto;" >
+						<thead class="fontSize">
+							<tr>
+								<th>Document Name</th>
+								<th>Company Document Status </th>
+								<th>Employee Document Status </th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={records} for:item="record">
+								<tr key={record}>
+									<td class="fontSize">
+										<div class="scrollClass">
+											{record.labelName}
+										</div>
+									</td>
+									<template if:true={record.labelFieldWrapper.isCompanyDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Uploaded" class="uploadedColor"></lightning-badge>
+										</td>
+									</template>
+									<template if:false={record.labelFieldWrapper.isCompanyDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Pending" class="pendingColor "></lightning-badge>
+										</td>
+									</template>
+									<template if:true={record.labelFieldWrapper.isEmployeeDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Uploaded" class="uploadedColor"></lightning-badge>
+										</td>
+									</template>
+									<template if:false={record.labelFieldWrapper.isEmployeeDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Pending" class="pendingColor"></lightning-badge>
+										</td>
+									</template>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</lightning-card>
+			</div>
+		</div>
+	</template>
+	<template if:false={isEmployeeDocument}>
+		<div class="background-div" style="width:100%;">
+			<lightning-card icon-name="standard:employee_organization" title="Employee Document Status">
+				<div>
+					<table style="width:90%; margin: auto;">
+						<thead>
+							<tr class="fontSize">
+								<th>Document Name</th>
+								<th>Company<br> Document <br>Status </th>
+								<th> Employee <br>Document<br> Status </th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={records} for:item="record">
+								<tr key={record}>
+									<td>
+										<div class="scrollClass fontSize">
+											{record.labelName}
+										</div>
+									</td>
+									<template if:true={record.labelFieldWrapper.isCompanyDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Uploaded" class="uploadedColor "></lightning-badge>
+										</td>
+									</template>
+									<template if:false={record.labelFieldWrapper.isCompanyDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Pending" class="pendingColor "></lightning-badge>
+										</td>
+									</template>
+									<template if:true={record.labelFieldWrapper.isEmployeeDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Uploaded" class="uploadedColor  "></lightning-badge>
+										</td>
+									</template>
+									<template if:false={record.labelFieldWrapper.isEmployeeDocumentStatus}>
+										<td class="fontSize">
+											<lightning-badge label="Pending" class="pendingColor"></lightning-badge>
+										</td>
+									</template>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+			</lightning-card>
+		</div>
+	</template>
+</template>

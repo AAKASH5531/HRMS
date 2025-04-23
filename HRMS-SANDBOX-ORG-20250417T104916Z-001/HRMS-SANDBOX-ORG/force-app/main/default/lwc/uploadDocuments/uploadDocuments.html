@@ -1,0 +1,43 @@
+<template>
+	<div class="slds-modal__header">
+		<h1 class="slds-modal__title slds-hyphenate ;padding-top:20px">{label.uploadDocument}</h1>
+	</div>
+	<template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+      </lightning-spinner>
+   </template>
+	<div class="slds-modal__content slds-p-around_medium">
+		<lightning-layout>
+			<lightning-layout-item>
+				<div style="padding-left:50px ;padding-top:25px">
+					<h2> <b>{label.uploadAttested}</b></h2>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item>
+				<div style="padding-left:52px">
+					<lightning-input type="file" accept=".png, .pdf" onchange={attestedFileUpload} multiple>
+					</lightning-input>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout>
+			<lightning-layout-item style="padding-left:10px;padding-top:20px">
+				<div style="padding-left:32px">
+					<h2><b>{label.uploadNonAttested}</b></h2>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item>
+				<div style="padding-left:30px">
+					<lightning-input type="file" accept=".png, .pdf" onchange={nonAttestedFileUpload} multiple>
+					</lightning-input>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</div>
+	<lightning-modal-footer>
+		<button class="slds-button slds-button_neutral" aria-label="Cancel and close"
+			onclick={handleCancelClick}>Cancel</button>
+		<button class="slds-button slds-button_brand" onclick={handleSaveFiles}
+			disabled={disableNextButton}>Save</button>
+	</lightning-modal-footer>
+</template>

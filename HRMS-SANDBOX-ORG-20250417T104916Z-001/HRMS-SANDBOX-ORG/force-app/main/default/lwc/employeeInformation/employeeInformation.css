@@ -1,0 +1,70 @@
+.triangle1 {
+  border-radius: 25px;
+  width: 120px;
+  height: 120px;
+  margin-top: -73px;
+  margin-left: -73px;
+  background: red linear-gradient(#05234b, #05234b);
+  clip-path: polygon(0% 50%, 50% 0%, 50% 50%);
+  transform: rotate(180deg);
+}
+.triangle2 {
+
+  width: 120px;
+  height: 120px;
+   margin-top: -50px; 
+  margin-left: 235px;
+  background: red linear-gradient(#05234b,#05234b);
+  clip-path: polygon(0% 50%, 50% 0%, 50% 50%);
+  transform: rotate(359deg);
+}
+.oval {
+  width: 200px;
+  height: 100px;
+  border-radius: 100px / 50px;
+}
+.cloud {
+  height: 150px;
+  width: 160px;
+  background: lightgray;
+  border-radius: 40vw;
+  border: 5px solid black;
+  position: relative;
+  margin-top: 10vw;
+}
+.cloud:before {
+  content: "";
+  position: absolute;
+  top: -10vw;
+  height: 120px;
+  width: 150px;
+  left: 15vw;
+  border-radius: 50%;
+  
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  background: lightgray;
+  transform: rotate(40deg);
+}
+.cloud:after {
+  content: "";
+  position: absolute;
+  height: 40vw;
+  width: 40vw;
+  top: -20vw;
+  left: 32vw;
+  border-radius: 50%;
+  border: 5px solid black;
+  border-bottom-color: transparent;
+  background: rgb(211, 211, 211);
+  border-right-color: transparent;
+  transform: rotate(55deg);
+}
+.background-div {
+  width: 350px;
+  height: 500px;
+  background-image: url('/resource/Cardbackground');
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-position: center; 
+}

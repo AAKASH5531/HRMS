@@ -1,0 +1,29 @@
+<template>
+	<!-- <div class="spinner">
+        <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                </lightning-spinner>
+        </template>
+	</div> -->
+		<div class="slds-modal__header">
+			<h1 class="slds-modal__title slds-hyphenate">Promote Employee</h1>
+		</div>
+		<div class="slds-modal__content slds-p-around_medium">
+			<div class="slds-grid">
+				<div class="slds-col slds-size_2-of-12"></div>
+				<div class="slds-col slds-size_2-of-12">
+				</div>
+				<div class="slds-col slds-size_6-of-12">
+						<lightning-combobox name="progress" label="Choose Designation" value={designationList}
+				 options={designationList}  data-name="inputValue">
+			</lightning-combobox>
+				</div>
+			</div>
+		</div>
+		<lightning-modal-footer>
+			<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleCancelClick}>Cancel</button>
+			<button class="slds-button slds-button_brand" onclick={sendButtonClick}  >Send
+		 </button>
+		</lightning-modal-footer>
+		
+	</template>
